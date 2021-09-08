@@ -50,7 +50,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
-        android:text="소환사 닉네임"
+        android:hint="소환사 닉네임"
         android:textColor="#EEEEEE"
         android:textColorHint="#EEEEEE"
         android:textSize="16dp"
@@ -137,14 +137,5 @@
         app:layout_constraintStart_toStartOf="@+id/view3"
         app:layout_constraintTop_toTopOf="@+id/view3"
         app:layout_constraintVertical_bias="0.511" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_bookMark"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
