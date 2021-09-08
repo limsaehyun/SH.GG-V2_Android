@@ -1,6 +1,7 @@
 package com.example.shggv2.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.shggv2.ApiProvider
 import com.example.shggv2.RiotAPI
 import com.example.shggv2.SummonerResponse
+import com.example.shggv2.UserResponse
 import com.example.shggv2.databinding.FragmentRankBinding
 import com.example.shggv2.databinding.FragmentSearchBinding
 import retrofit2.Call
@@ -17,6 +19,7 @@ import retrofit2.Response
 
 class SearchFragment : Fragment() {
 
+    private val TAG = "SearchFragment"
     private lateinit var binding: FragmentSearchBinding
 
     companion object {
@@ -34,6 +37,8 @@ class SearchFragment : Fragment() {
 
         lateinit var userName: String
         lateinit var profileIconId: String
+
+        var api_key = "RGAPI-de257029-841b-42da-b6f9-cccfa87c3bea"
     }
 
     override fun onCreateView(
@@ -57,10 +62,17 @@ class SearchFragment : Fragment() {
 
     private fun getSummoner(userName: String) {
         val apiProvider = ApiProvider.getInstance().create(RiotAPI::class.java)
-        apiProvider.getSummoner(userName).enqueue(object : Callback<SummonerResponse> {
-            override fun onResponse(call: Call<SummonerResponse>, response: Response<SummonerResponse>) {
-                if(response.isSuccessful) {
-                    setSummoner(response.body()!!)
+
+        val call:Call<SummonerResponse> = apiProvider.getSummoner(userName, api_key)
+
+        call.enqueue(object : Callback<SummonerResponse> {
+            override fun onResponse(
+                call: Call<SummonerResponse>,
+                response: Response<SummonerResponse>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d(TAG, "onResponse: " + response.body()?.id.toString())
+                    getUserInfo(response.body()?.id.toString())
                 } else {
                     Toast.makeText(context, "소환사가 존재하지 않습니다.", Toast.LENGTH_SHORT)
                 }
@@ -68,14 +80,25 @@ class SearchFragment : Fragment() {
 
             override fun onFailure(call: Call<SummonerResponse>, t: Throwable) {
                 Toast.makeText(context, "소환사가 존재하지 않습니다.", Toast.LENGTH_SHORT)
+                Log.d(TAG, "onFailure: ")
             }
 
         })
     }
+    
+    private fun getUserInfo(id: String) {
+        val apiProvider = ApiProvider.getInstance().create(RiotAPI::class.java)
+        apiProvider.getUser(id, api_key).enqueue(object : Callback<List<UserResponse>> {
+            override fun onResponse(
+                call: Call<List<UserResponse>>,
+                response: Response<List<UserResponse>>
+            ) {
+//                if(i in response.body().tier)
+            }
 
-    private fun setSummoner(summonerResponse: SummonerResponse) {
-
+            override fun onFailure(call: Call<List<UserResponse>>, t: Throwable) {
+                Log.d(TAG, "onFailure: 1")
+            }
+        })
     }
-
-
 }
