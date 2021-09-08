@@ -1,5 +1,6 @@
 package com.example.shggv2.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,10 +10,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.shggv2.ApiProvider
 import com.example.shggv2.RiotAPI
-import com.example.shggv2.SummonerResponse
-import com.example.shggv2.UserResponse
-import com.example.shggv2.databinding.FragmentRankBinding
+import com.example.shggv2.UserActivity
 import com.example.shggv2.databinding.FragmentSearchBinding
+import com.example.shggv2.model.SummonerDTO
+import com.example.shggv2.model.UserDTO
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -63,42 +64,61 @@ class SearchFragment : Fragment() {
     private fun getSummoner(userName: String) {
         val apiProvider = ApiProvider.getInstance().create(RiotAPI::class.java)
 
-        val call:Call<SummonerResponse> = apiProvider.getSummoner(userName, api_key)
+        val call:Call<SummonerDTO> = apiProvider.getSummoner(userName, api_key)
 
-        call.enqueue(object : Callback<SummonerResponse> {
+        call.enqueue(object : Callback<SummonerDTO> {
             override fun onResponse(
-                call: Call<SummonerResponse>,
-                response: Response<SummonerResponse>
+                    call: Call<SummonerDTO>,
+                    response: Response<SummonerDTO>
             ) {
                 if (response.isSuccessful) {
-                    Log.d(TAG, "onResponse: " + response.body()?.id.toString())
                     getUserInfo(response.body()?.id.toString())
+                    profileIconId = response.body()?.profileIconId.toString()
                 } else {
                     Toast.makeText(context, "소환사가 존재하지 않습니다.", Toast.LENGTH_SHORT)
                 }
             }
 
-            override fun onFailure(call: Call<SummonerResponse>, t: Throwable) {
+            override fun onFailure(call: Call<SummonerDTO>, t: Throwable) {
                 Toast.makeText(context, "소환사가 존재하지 않습니다.", Toast.LENGTH_SHORT)
-                Log.d(TAG, "onFailure: ")
             }
 
         })
     }
     
     private fun getUserInfo(id: String) {
-        val apiProvider = ApiProvider.getInstance().create(RiotAPI::class.java)
-        apiProvider.getUser(id, api_key).enqueue(object : Callback<List<UserResponse>> {
-            override fun onResponse(
-                call: Call<List<UserResponse>>,
-                response: Response<List<UserResponse>>
-            ) {
-//                if(i in response.body().tier)
+        val riotAPI = ApiProvider.getInstance().create(RiotAPI::class.java)
+
+        val call: Call<List<UserDTO>> = riotAPI.getUser(id, api_key)
+
+        call.enqueue(object : Callback<List<UserDTO>> {
+            override fun onResponse(call: Call<List<UserDTO>>, response: Response<List<UserDTO>>) {
+                val data: List<UserDTO>? = response.body()
+                data?.let { saveUserInfo(it) }
             }
 
-            override fun onFailure(call: Call<List<UserResponse>>, t: Throwable) {
-                Log.d(TAG, "onFailure: 1")
+            override fun onFailure(call: Call<List<UserDTO>>, t: Throwable) {
             }
         })
+    }
+
+    private fun saveUserInfo(userInfo: List<UserDTO>) {
+
+        if(userInfo.size > 0) {
+            SoloTier = userInfo.get(0).tier
+            SoloRank = userInfo.get(0).rank
+            SoloName = userInfo.get(0).summonerName
+            SoloWins = userInfo.get(0).wins
+            SoloLosses = userInfo.get(0).losses
+        }
+        if(userInfo.size > 1) {
+            FlexTier = userInfo.get(1).tier
+            FlexRank = userInfo.get(1).rank
+            FlexName = userInfo.get(1).summonerName
+            FlexWins = userInfo.get(1).wins
+            FlexLosses = userInfo.get(1).losses
+        }
+
+        startActivity(Intent(context, UserActivity::class.java))
     }
 }
