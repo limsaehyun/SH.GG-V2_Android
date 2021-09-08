@@ -1,3 +1,5 @@
 package com.example.shggv2
 
-data class SummonerResponse(val tier: List<String>, val rank: List<String>, val summonerName: List<String>, val wins: List<String>, val losses: List<StackOverflowError>)
+data class SummonerResponse(val id: String, val accountId: String,
+                            val puuid: String, val name: String, val profileIconId: String,
+                            val revisionDate: String, val summonerLevel: String)
