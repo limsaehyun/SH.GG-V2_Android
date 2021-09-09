@@ -1,4 +1,4 @@
-package com.example.shggv2
+package com.example.shggv2.task
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

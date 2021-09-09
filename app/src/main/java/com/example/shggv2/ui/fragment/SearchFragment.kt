@@ -8,15 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.shggv2.ApiProvider
-import com.example.shggv2.RiotAPI
-import com.example.shggv2.UserActivity
+import com.example.shggv2.remote.ApiProvider
+import com.example.shggv2.remote.RiotAPI
+import com.example.shggv2.ui.activity.UserActivity
 import com.example.shggv2.databinding.FragmentSearchBinding
 import com.example.shggv2.model.SummonerDTO
 import com.example.shggv2.model.UserDTO
+import com.example.shggv2.remote.api_key
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.RuntimeException
 
 class SearchFragment : Fragment() {
 
@@ -40,8 +42,6 @@ class SearchFragment : Fragment() {
 
         lateinit var userName: String
         lateinit var profileIconId: String
-
-        var api_key = "RGAPI-0fe05556-89e2-4d21-9bd6-1178ced02582"
     }
 
     override fun onCreateView(
@@ -85,7 +85,7 @@ class SearchFragment : Fragment() {
 
             override fun onFailure(call: Call<SummonerDTO>, t: Throwable) {
                 Toast.makeText(context, "소환사가 존재하지 않습니다.", Toast.LENGTH_SHORT)
-                Log.d(TAG, "onFailure: 1 ")
+                Log.d(TAG, "onFailure: 1 " )
             }
 
         })

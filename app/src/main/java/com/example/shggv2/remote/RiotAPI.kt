@@ -1,4 +1,4 @@
-package com.example.shggv2
+package com.example.shggv2.remote
 
 import com.example.shggv2.model.SummonerDTO
 import com.example.shggv2.model.UserDTO

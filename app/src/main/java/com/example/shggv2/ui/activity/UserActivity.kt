@@ -1,25 +1,20 @@
-package com.example.shggv2
+package com.example.shggv2.ui.activity
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.ImageDecoder
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
+import com.example.shggv2.R
 import com.example.shggv2.databinding.ActivityUserBinding
+import com.example.shggv2.task.URLtoBitmapTask
 import com.example.shggv2.ui.fragment.SearchFragment
-import java.io.IOException
-import java.net.HttpURLConnection
-import java.net.MalformedURLException
-import java.net.URI
 import java.net.URL
 
 class UserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserBinding
+
+    private val TAG = "UserActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,5 +42,19 @@ class UserActivity : AppCompatActivity() {
         }
         var bitmap: Bitmap = image_task.execute().get()
         binding.ivProfileImage.setImageBitmap(bitmap)
+
+        Log.d(TAG, "onCreate: " + SearchFragment.SoloRank)
+
+        when(SearchFragment.SoloTier) {
+            "UNRANK" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_unrank)
+            "IRON" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_iron)
+            "BRONZE" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_bronze)
+            "SILVER" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_silver)
+            "GOLD" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_gold)
+            "PLATINUM" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_platinum)
+            "DIAMOND" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_diamond)
+            "GRANDMASTER" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_grandmaster)
+            "CHALLENGER" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_challenger)
+        }
     }
 }

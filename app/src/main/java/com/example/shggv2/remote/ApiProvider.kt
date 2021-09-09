@@ -1,4 +1,4 @@
-package com.example.shggv2
+package com.example.shggv2.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
