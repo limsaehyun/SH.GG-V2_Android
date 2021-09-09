@@ -28,13 +28,13 @@ class UserActivity : AppCompatActivity() {
 
         binding.tvUserName.setText(SearchFragment.userName)
 
-        binding.tvSoloTier.setText(SearchFragment.SoloRank + " " + SearchFragment.SoloTier)
+        binding.tvSoloTier.setText(SearchFragment.SoloTier + " " + SearchFragment.SoloRank)
         binding.tvSoloLP.setText(SearchFragment.SoloLeaguePoints.toString() + "LP / " + SoloWins + "승 " + SoloLosses + "패")
         binding.tvSoloWinRate.setText("승률 : " + SoloWins / SoloLosses * 100 + " %")
 
-        binding.tvSoloTier.setText(SearchFragment.FlexRank + " " + SearchFragment.FlexTier)
-        binding.tvSoloLP.setText(SearchFragment.FlexLeaguePoints.toString() + "LP / " + FlexWins + "승 " + FlexLosses + "패")
-        binding.tvSoloWinRate.setText("승률 : " + FlexWins / FlexLosses * 100 + " %")
+        binding.tvFlexTier.setText(SearchFragment.FlexTier + " " + SearchFragment.FlexRank)
+        binding.tvFlexLP.setText(SearchFragment.FlexLeaguePoints.toString() + "LP / " + FlexWins + "승 " + FlexLosses + "패")
+        binding.tvFlexWinRate.setText("승률 : " + FlexWins / FlexLosses * 100 + " %")
 
         var image_task: URLtoBitmapTask = URLtoBitmapTask()
         image_task = URLtoBitmapTask().apply {
@@ -46,15 +46,26 @@ class UserActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate: " + SearchFragment.SoloRank)
 
         when(SearchFragment.SoloTier) {
-            "UNRANK" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_unrank)
-            "IRON" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_iron)
-            "BRONZE" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_bronze)
-            "SILVER" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_silver)
-            "GOLD" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_gold)
-            "PLATINUM" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_platinum)
-            "DIAMOND" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_diamond)
-            "GRANDMASTER" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_grandmaster)
-            "CHALLENGER" -> binding.ivSoloTIer.setImageResource(R.drawable.ic_rank_challenger)
+            "UNRANK" -> binding.ivSoloTier.setImageResource(R.drawable.ic_rank_unrank)
+            "IRON" -> binding.ivSoloTier.setImageResource(R.drawable.ic_rank_iron)
+            "BRONZE" -> binding.ivSoloTier.setImageResource(R.drawable.ic_rank_bronze)
+            "SILVER" -> binding.ivSoloTier.setImageResource(R.drawable.ic_rank_silver)
+            "GOLD" -> binding.ivSoloTier.setImageResource(R.drawable.ic_rank_gold)
+            "PLATINUM" -> binding.ivSoloTier.setImageResource(R.drawable.ic_rank_platinum)
+            "DIAMOND" -> binding.ivSoloTier.setImageResource(R.drawable.ic_rank_diamond)
+            "GRANDMASTER" -> binding.ivSoloTier.setImageResource(R.drawable.ic_rank_grandmaster)
+            "CHALLENGER" -> binding.ivSoloTier.setImageResource(R.drawable.ic_rank_challenger)
+        }
+        when(SearchFragment.FlexTier) {
+            "UNRANK" -> binding.ivFlexTier.setImageResource(R.drawable.ic_rank_unrank)
+            "IRON" -> binding.ivFlexTier.setImageResource(R.drawable.ic_rank_iron)
+            "BRONZE" -> binding.ivFlexTier.setImageResource(R.drawable.ic_rank_bronze)
+            "SILVER" -> binding.ivFlexTier.setImageResource(R.drawable.ic_rank_silver)
+            "GOLD" -> binding.ivFlexTier.setImageResource(R.drawable.ic_rank_gold)
+            "PLATINUM" -> binding.ivFlexTier.setImageResource(R.drawable.ic_rank_platinum)
+            "DIAMOND" -> binding.ivFlexTier.setImageResource(R.drawable.ic_rank_diamond)
+            "GRANDMASTER" -> binding.ivFlexTier.setImageResource(R.drawable.ic_rank_grandmaster)
+            "CHALLENGER" -> binding.ivFlexTier.setImageResource(R.drawable.ic_rank_challenger)
         }
     }
 }
