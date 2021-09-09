@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserActivity">
+    tools:context=".ui.activity.UserActivity">
 
     <View
         android:id="@+id/view8"
@@ -181,7 +181,7 @@
         app:layout_constraintTop_toTopOf="@+id/btnReset" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/ivSoloTier"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/view8"
@@ -192,7 +192,7 @@
         app:srcCompat="@drawable/ic_rank_unrank" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/ivFlexTier"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/view9"
@@ -285,5 +285,6 @@
         app:layout_constraintEnd_toEndOf="@+id/tvFlexLP"
         app:layout_constraintStart_toStartOf="@+id/tvFlexLP"
         app:layout_constraintTop_toBottomOf="@+id/tvFlexLP" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
