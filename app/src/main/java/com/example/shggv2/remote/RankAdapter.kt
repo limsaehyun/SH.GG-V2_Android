@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shggv2.R
-import com.example.shggv2.model.RankDTO
-import com.example.shggv2.model.RankData
-import com.example.shggv2.model.UserDTO
+import com.example.shggv2.model.RankRvData
 
 
-class RankAdapter(val context: Context, val studentList: ArrayList<RankData>):
+class RankAdapter(val context: Context, val studentList: ArrayList<RankRvData>):
         RecyclerView.Adapter<RankAdapter.Holder>() {
 
     inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
@@ -23,11 +21,11 @@ class RankAdapter(val context: Context, val studentList: ArrayList<RankData>):
         val tvRankUserTier = itemView?.findViewById<TextView>(R.id.tvRankUserTier)
         val tvRankLP = itemView?.findViewById<TextView>(R.id.tvRankLP)
 
-        fun bind(rankData: RankData, context: Context) {
-            tvRankCount?.text = rankData.rank.toString()
-            tvRankUserName?.text = rankData.summonerName
-            tvRankUserTier?.text = rankData.tier
-            tvRankLP?.text = rankData.leaguePoints.toString()
+        fun bind(rankRvData: RankRvData, context: Context) {
+            tvRankCount?.text = rankRvData.rank.toString()
+            tvRankUserName?.text = rankRvData.summonerName
+            tvRankUserTier?.text = rankRvData.tier
+            tvRankLP?.text = rankRvData.leaguePoints.toString()
         }
     }
 

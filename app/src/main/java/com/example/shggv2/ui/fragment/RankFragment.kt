@@ -5,18 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.shggv2.R
 import com.example.shggv2.databinding.FragmentRankBinding
-import com.example.shggv2.databinding.RankViewBinding
 import com.example.shggv2.model.RankDTO
-import com.example.shggv2.model.RankData
-import com.example.shggv2.model.UserDTO
+import com.example.shggv2.model.RankRvData
 import com.example.shggv2.remote.ApiProvider
 import com.example.shggv2.remote.RankAdapter
 import com.example.shggv2.remote.RiotAPI
@@ -31,7 +24,7 @@ class RankFragment : Fragment() {
     
     private lateinit var binding: FragmentRankBinding
 
-    private var rankList = arrayListOf<RankData>()
+    private var rankList = arrayListOf<RankRvData>()
 
 
     override fun onCreateView(
@@ -63,7 +56,6 @@ class RankFragment : Fragment() {
             override fun onResponse(call: Call<List<RankDTO>>, response: Response<List<RankDTO>>) {
                 if (response.isSuccessful) {
                     val data: List<RankDTO>? = response.body()
-                    Log.d(TAG, "onResponse: " + data)
                     data?.let { setRank(it) }
                 }
             }
@@ -80,7 +72,7 @@ class RankFragment : Fragment() {
             var rankUserTier = rankInfo.get(i).tier
             var rankLP = rankInfo.get(i).leaguePoints
 
-            val rankData = RankData(rankCount, rankUserName, rankUserTier, rankLP)
+            val rankData = RankRvData(rankCount, rankUserName, rankUserTier, rankLP)
 
             rankList.add(rankData)
 
