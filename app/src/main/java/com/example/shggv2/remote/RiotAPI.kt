@@ -21,11 +21,12 @@ interface RiotAPI {
         @Query("api_key") apiKey: String
     ): Call<List<UserDTO>>
 
-    @GET("https://kr.api.riotgames.com/lol/league-exp/v4/entries")
+    @GET("https://kr.api.riotgames.com/lol/league-exp/v4/entries/{queue}/{tier}/{division}")
     fun getRank(
-        @Query("api_key") apiKey: String,
-        @Query("queue") queue: String,
-        @Query("tier") tier: String,
-        @Query("division") division: String
+        @Path("queue") queue: String,
+        @Path("tier") tier: String,
+        @Path("division") division: String,
+        @Query("page") page: Int,
+        @Query("api_key") apiKey: String
     ): Call<List<RankDTO>>
 }
