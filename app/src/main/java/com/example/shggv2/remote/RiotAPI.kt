@@ -1,5 +1,6 @@
 package com.example.shggv2.remote
 
+import com.example.shggv2.model.RankDTO
 import com.example.shggv2.model.SummonerDTO
 import com.example.shggv2.model.UserDTO
 import retrofit2.Call
@@ -19,4 +20,12 @@ interface RiotAPI {
         @Path("encryptedSummonerId") id: String,
         @Query("api_key") apiKey: String
     ): Call<List<UserDTO>>
+
+    @GET("https://kr.api.riotgames.com/lol/league-exp/v4/entries")
+    fun getRank(
+        @Query("api_key") apiKey: String,
+        @Query("queue") queue: String,
+        @Query("tier") tier: String,
+        @Query("division") division: String
+    ): Call<List<RankDTO>>
 }
