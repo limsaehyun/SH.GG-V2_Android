@@ -33,7 +33,7 @@ class RankFragment : Fragment() {
 
     private lateinit var rvRank: RecyclerView
 
-    private var rankList = arrayListOf<RankDTO>()
+    private var rankList = arrayListOf<RankData>()
 
 
     override fun onCreateView(
@@ -49,7 +49,6 @@ class RankFragment : Fragment() {
 
         binding.rvRank.setHasFixedSize(true)
 
-
         binding.tvSoloRank.setOnClickListener {
             getRank("RANKED_SOLO_5x5", "CHALLENGER", "I")
         }
@@ -60,11 +59,13 @@ class RankFragment : Fragment() {
     private fun getRank(queue: String, tier: String, division: String) {
         val apiProvider = ApiProvider.getInstance().create(RiotAPI::class.java)
 
-        val call: Call<List<RankDTO>> = apiProvider.getRank(api_key, queue, tier, division)
+        val call: Call<List<RankDTO>> = apiProvider.getRank(queue, tier, division, 1, api_key)
 
         call.enqueue(object : Callback<List<RankDTO>> {
             override fun onResponse(call: Call<List<RankDTO>>, response: Response<List<RankDTO>>) {
-                Log.d(TAG, "onResponse: ")
+                val data: List<RankDTO>? = response.body()
+                Log.d(TAG, "onResponse: " + response.code())
+//                data?.let { setRank(it) }
             }
 
             override fun onFailure(call: Call<List<RankDTO>>, t: Throwable) {
@@ -73,8 +74,18 @@ class RankFragment : Fragment() {
         })
     }
 
-    override fun onResume() {
-        super.onResume()
-        
+    private fun setRank(rankInfo: List<RankDTO>) {
+//        for(i in 0..rankInfo.size) {
+//            var rankCount = i
+//            var rankUserName = rankInfo.get(i).summonerName
+//            var rankUserTier = rankInfo.get(i).tier
+//            var rankLP = rankInfo.get(i).leaguePoints
+//
+//            val rankData = RankData(rankCount, rankUserName, rankUserTier, rankLP)
+//
+//            rankList.add(rankData)
+//
+//            binding.rvRank.adapter?.notifyDataSetChanged()
+//        }
     }
 }
