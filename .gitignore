@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+app/src/main/java/com/example/shggv2/remote/RiotApiKey.kt
