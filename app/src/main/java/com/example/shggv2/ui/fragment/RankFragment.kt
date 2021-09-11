@@ -31,8 +31,6 @@ class RankFragment : Fragment() {
     
     private lateinit var binding: FragmentRankBinding
 
-    private lateinit var rvRank: RecyclerView
-
     private var rankList = arrayListOf<RankData>()
 
 
@@ -41,7 +39,7 @@ class RankFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentRankBinding.inflate(inflater, container, false)
+        binding = FragmentRankBinding.inflate(inflater, container, false)
 
 
         binding.rvRank.adapter = context?.let { RankAdapter(it, rankList) }
@@ -63,29 +61,30 @@ class RankFragment : Fragment() {
 
         call.enqueue(object : Callback<List<RankDTO>> {
             override fun onResponse(call: Call<List<RankDTO>>, response: Response<List<RankDTO>>) {
-                val data: List<RankDTO>? = response.body()
-                Log.d(TAG, "onResponse: " + response.code())
-//                data?.let { setRank(it) }
+                if (response.isSuccessful) {
+                    val data: List<RankDTO>? = response.body()
+                    Log.d(TAG, "onResponse: " + data)
+                    data?.let { setRank(it) }
+                }
             }
 
             override fun onFailure(call: Call<List<RankDTO>>, t: Throwable) {
-                Log.d(TAG, "onFailure: ")
             }
         })
     }
 
     private fun setRank(rankInfo: List<RankDTO>) {
-//        for(i in 0..rankInfo.size) {
-//            var rankCount = i
-//            var rankUserName = rankInfo.get(i).summonerName
-//            var rankUserTier = rankInfo.get(i).tier
-//            var rankLP = rankInfo.get(i).leaguePoints
-//
-//            val rankData = RankData(rankCount, rankUserName, rankUserTier, rankLP)
-//
-//            rankList.add(rankData)
-//
-//            binding.rvRank.adapter?.notifyDataSetChanged()
-//        }
+        for(i: Int in 0..101) {
+            var rankCount = i
+            var rankUserName = rankInfo.get(i).summonerName
+            var rankUserTier = rankInfo.get(i).tier
+            var rankLP = rankInfo.get(i).leaguePoints
+
+            val rankData = RankData(rankCount, rankUserName, rankUserTier, rankLP)
+
+            rankList.add(rankData)
+
+            binding.rvRank.adapter?.notifyDataSetChanged()
+        }
     }
 }
