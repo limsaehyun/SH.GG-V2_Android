@@ -3,31 +3,70 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="80dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <TextView
-            android:layout_marginStart="32dp"
+            android:id="@+id/tvRankCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:fontFamily="@font/bmdohyun"
             android:text="1"
-            android:textSize="24dp"
-            android:fontFamily="@font/bmdohyun"/>
+            android:textSize="24dp" />
+
         <ImageView
-            android:layout_marginStart="20dp"
+            android:id="@+id/ivRankUserImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@color/black"/>
+            android:layout_marginStart="20dp"
+            android:src="@color/black" />
+
         <TextView
+            android:id="@+id/tvRankUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:textSize="24dp"
-            android:text="장인 정글러"/>
+            android:text="장인 정글러"
+            android:textSize="18dp" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical|right"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/ivRanTierBg"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="#E91E63"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvRankUserTier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="C1"
+                android:textColor="#EEEEEE" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvRankLP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:text="1600LP" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
