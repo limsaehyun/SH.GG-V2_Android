@@ -1,14 +1,13 @@
 package com.example.shggv2.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shggv2.databinding.FragmentRankBinding
-import com.example.shggv2.model.RankDTO
+import com.example.shggv2.model.DTO.RankDTO
 import com.example.shggv2.model.RankRvData
 import com.example.shggv2.remote.ApiProvider
 import com.example.shggv2.remote.RankAdapter

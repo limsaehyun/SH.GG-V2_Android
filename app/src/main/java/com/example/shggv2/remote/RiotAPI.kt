@@ -1,8 +1,8 @@
 package com.example.shggv2.remote
 
-import com.example.shggv2.model.RankDTO
-import com.example.shggv2.model.SummonerDTO
-import com.example.shggv2.model.UserDTO
+import com.example.shggv2.model.DTO.RankDTO
+import com.example.shggv2.model.DTO.SummonerDTO
+import com.example.shggv2.model.DTO.UserDTO
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

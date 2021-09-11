@@ -1,4 +1,4 @@
-package com.example.shggv2.model
+package com.example.shggv2.model.DTO
 
 data class RankDTO(val leagueId: String, val queueType: String, val tier: String, val rank: String,
                     val summonerId: String, val summonerName: String, val leaguePoints: Int,
