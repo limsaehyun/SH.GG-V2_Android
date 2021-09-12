@@ -75,16 +75,13 @@ class SearchFragment : Fragment() {
                 if (response.isSuccessful) {
                     getUserInfo(response.body()?.id.toString())
                     profileIconId = response.body()?.profileIconId.toString()
-                    Log.d(TAG, "onResponse: 1 ")
                 } else {
                     Toast.makeText(context, "소환사가 존재하지 않습니다.", Toast.LENGTH_SHORT)
-                    Log.d(TAG, "onResponse: 2 " + response.code())
                 }
             }
 
             override fun onFailure(call: Call<SummonerDTO>, t: Throwable) {
                 Toast.makeText(context, "소환사가 존재하지 않습니다.", Toast.LENGTH_SHORT)
-                Log.d(TAG, "onFailure: 1 " )
             }
 
         })
@@ -99,11 +96,9 @@ class SearchFragment : Fragment() {
             override fun onResponse(call: Call<List<UserDTO>>, response: Response<List<UserDTO>>) {
                 val data: List<UserDTO>? = response.body()
                 data?.let { saveUserInfo(it) }
-                Log.d(TAG, "onResponse: 3")
             }
 
             override fun onFailure(call: Call<List<UserDTO>>, t: Throwable) {
-                Log.d(TAG, "onFailure: 2")
             }
         })
     }
