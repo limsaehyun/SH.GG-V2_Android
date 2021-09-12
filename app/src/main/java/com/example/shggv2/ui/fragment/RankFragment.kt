@@ -1,13 +1,16 @@
 package com.example.shggv2.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shggv2.databinding.FragmentRankBinding
 import com.example.shggv2.model.DTO.RankDTO
+import com.example.shggv2.model.DTO.SummonerDTO
 import com.example.shggv2.model.RankRvData
 import com.example.shggv2.remote.ApiProvider
 import com.example.shggv2.remote.RankAdapter
@@ -43,6 +46,11 @@ class RankFragment : Fragment() {
             getRank("RANKED_SOLO_5x5", "CHALLENGER", "I")
         }
 
+        binding.tvFlexRank.setOnClickListener {
+            getRank("RANKED_FLEX_SR", "CHALLENGER", "I")
+        }
+
+
         return binding.root
     }
 
@@ -65,7 +73,10 @@ class RankFragment : Fragment() {
     }
 
     private fun setRank(rankInfo: List<RankDTO>) {
-        for(i: Int in 0..101) {
+
+        rankList.clear()
+
+        for(i: Int in 0 until rankInfo.size) {
             var rankCount = i
             var rankUserName = rankInfo.get(i).summonerName
             var rankUserTier = rankInfo.get(i).tier
