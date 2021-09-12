@@ -28,13 +28,17 @@ class UserActivity : AppCompatActivity() {
 
         binding.tvUserName.setText(SearchFragment.userName)
 
-        binding.tvSoloTier.setText(SearchFragment.SoloTier + " " + SearchFragment.SoloRank)
-        binding.tvSoloLP.setText(SearchFragment.SoloLeaguePoints.toString() + "LP / " + SoloWins + "승 " + SoloLosses + "패")
-        binding.tvSoloWinRate.setText("승률 : " + SoloWins / SoloLosses * 100 + " %")
+        if(SearchFragment.SoloTier != "UNRANK") {
+            binding.tvSoloTier.setText(SearchFragment.SoloTier + " " + SearchFragment.SoloRank)
+            binding.tvSoloLP.setText(SearchFragment.SoloLeaguePoints.toString() + "LP / " + SoloWins + "승 " + SoloLosses + "패")
+            binding.tvSoloWinRate.setText("승률 : " + SoloWins / SoloLosses * 100 + " %")
+        }
 
-        binding.tvFlexTier.setText(SearchFragment.FlexTier + " " + SearchFragment.FlexRank)
-        binding.tvFlexLP.setText(SearchFragment.FlexLeaguePoints.toString() + "LP / " + FlexWins + "승 " + FlexLosses + "패")
-        binding.tvFlexWinRate.setText("승률 : " + FlexWins / FlexLosses * 100 + " %")
+        if(SearchFragment.FlexTier != "UNRANK") {
+            binding.tvFlexTier.setText(SearchFragment.FlexTier + " " + SearchFragment.FlexRank)
+            binding.tvFlexLP.setText(SearchFragment.FlexLeaguePoints.toString() + "LP / " + FlexWins + "승 " + FlexLosses + "패")
+            binding.tvFlexWinRate.setText("승률 : " + FlexWins / FlexLosses * 100 + " %")
+        }
 
         var image_task: URLtoBitmapTask = URLtoBitmapTask()
         image_task = URLtoBitmapTask().apply {
