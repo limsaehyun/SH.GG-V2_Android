@@ -55,15 +55,6 @@
             android:gravity="center"
             android:text="자랭"
             android:textColor="#EEEEEE" />
-
-        <TextView
-            android:id="@+id/tvLvRank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="레밸"
-            android:textColor="#EEEEEE" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
