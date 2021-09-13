@@ -47,8 +47,6 @@ class UserActivity : AppCompatActivity() {
         var bitmap: Bitmap = image_task.execute().get()
         binding.ivProfileImage.setImageBitmap(bitmap)
 
-        Log.d(TAG, "onCreate: " + SearchFragment.SoloRank)
-
         when(SearchFragment.SoloTier) {
             "UNRANK" -> binding.ivSoloTier.setImageResource(R.drawable.ic_rank_unrank)
             "IRON" -> binding.ivSoloTier.setImageResource(R.drawable.ic_rank_iron)
