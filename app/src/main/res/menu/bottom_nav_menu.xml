@@ -16,4 +16,9 @@
         android:icon="@drawable/ic_record"
         android:title="@string/title_record" />
 
+    <item
+        android:id="@+id/navigation_friend"
+        android:icon="@drawable/ic_friend"
+        android:title="@string/title_friend" />
+
 </menu>
