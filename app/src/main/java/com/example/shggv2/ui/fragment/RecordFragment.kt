@@ -11,10 +11,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.shggv2.R
 import com.example.shggv2.databinding.FragmentRecordBinding
 import com.example.shggv2.databinding.FragmentSearchBinding
+import com.example.shggv2.model.DTO.RecordRvData
 
 class RecordFragment : Fragment() {
 
     private lateinit var binding: FragmentRecordBinding
+
+    private var recordList = arrayListOf<RecordRvData>()
 
     override fun onCreateView(
             inflater: LayoutInflater,
