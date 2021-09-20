@@ -11,13 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shggv2.R
 import com.example.shggv2.model.DTO.SummonerDTO
 import com.example.shggv2.model.RankRvData
+import com.example.shggv2.ui.fragment.SearchFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
 class RankAdapter(val context: Context, val studentList: ArrayList<RankRvData>):
-        RecyclerView.Adapter<RankAdapter.Holder>() {
+        RecyclerView.Adapter<RankAdapter.Holder>(){
 
     private val TAG = "RankAdapter"
 
@@ -28,10 +29,14 @@ class RankAdapter(val context: Context, val studentList: ArrayList<RankRvData>):
         val tvRankUserTier = itemView?.findViewById<TextView>(R.id.tvRankUserTier)
         val tvRankLP = itemView?.findViewById<TextView>(R.id.tvRankLP)
 
+        lateinit var userName: String
+
         fun bind(rankRvData: RankRvData, context: Context) {
-            tvRankCount?.text = rankRvData.rank.toString()
+            tvRankCount?.text = (rankRvData.rank + 1).toString()
             tvRankUserName?.text = rankRvData.summonerName
             tvRankLP?.text = rankRvData.leaguePoints.toString()
+
+            this.userName = rankRvData.summonerName
 
             when(rankRvData.tier) {
                 "CHALLENGER" -> {
@@ -47,7 +52,6 @@ class RankAdapter(val context: Context, val studentList: ArrayList<RankRvData>):
                     ivRanTierBg?.setBackgroundColor(ContextCompat.getColor(context, R.color.tierMasterBG))
                 }
             }
-
         }
     }
 
@@ -58,6 +62,11 @@ class RankAdapter(val context: Context, val studentList: ArrayList<RankRvData>):
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(studentList[position], context)
+
+        holder.tvRankUserName?.setOnClickListener {
+            val search = Search(context)
+            search.getSummoner(holder.userName)
+        }
     }
 
     override fun getItemCount(): Int {
