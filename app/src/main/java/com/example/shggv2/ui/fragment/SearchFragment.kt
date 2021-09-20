@@ -1,24 +1,13 @@
 package com.example.shggv2.ui.fragment
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.shggv2.remote.ApiProvider
-import com.example.shggv2.remote.RiotAPI
-import com.example.shggv2.ui.activity.UserActivity
 import com.example.shggv2.databinding.FragmentSearchBinding
-import com.example.shggv2.model.DTO.SummonerDTO
-import com.example.shggv2.model.DTO.UserDTO
-import com.example.shggv2.remote.Search
-import com.example.shggv2.remote.api_key
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.shggv2.viewModel.Search
 
 class SearchFragment : Fragment() {
 

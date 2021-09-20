@@ -3,12 +3,11 @@ package com.example.shggv2.remote
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shggv2.R
 import com.example.shggv2.model.DTO.RecordRvData
-import com.example.shggv2.model.RankRvData
+import com.example.shggv2.model.DTO.RankRvData
 
 class RecordAdapter (val context: Context, val recordList: ArrayList<RecordRvData>):
         RecyclerView.Adapter<RecordAdapter.Holder>() {

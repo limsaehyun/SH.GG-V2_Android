@@ -1,7 +1,6 @@
 package com.example.shggv2.remote
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +8,8 @@ import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shggv2.R
-import com.example.shggv2.model.DTO.SummonerDTO
-import com.example.shggv2.model.RankRvData
-import com.example.shggv2.ui.fragment.SearchFragment
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.shggv2.model.DTO.RankRvData
+import com.example.shggv2.viewModel.Search
 
 
 class RankAdapter(val context: Context, val studentList: ArrayList<RankRvData>):

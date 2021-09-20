@@ -2,13 +2,11 @@ package com.example.shggv2.ui.activity
 
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shggv2.R
 import com.example.shggv2.databinding.ActivityUserBinding
-import com.example.shggv2.remote.Search
+import com.example.shggv2.viewModel.Search
 import com.example.shggv2.task.URLtoBitmapTask
-import com.example.shggv2.ui.fragment.SearchFragment
 import java.net.URL
 
 class UserActivity : AppCompatActivity() {

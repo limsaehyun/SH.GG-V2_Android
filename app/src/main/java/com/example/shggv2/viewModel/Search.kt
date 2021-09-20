@@ -1,12 +1,14 @@
-package com.example.shggv2.remote
+package com.example.shggv2.viewModel
 
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import com.example.shggv2.model.DTO.SummonerDTO
 import com.example.shggv2.model.DTO.UserDTO
+import com.example.shggv2.remote.ApiProvider
+import com.example.shggv2.remote.RiotAPI
+import com.example.shggv2.remote.api_key
 import com.example.shggv2.ui.activity.UserActivity
-import com.example.shggv2.ui.fragment.SearchFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
