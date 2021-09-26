@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_friend"
-        android:name="com.example.shggv2.ui.fragment.FriendFragment"
+        android:name="com.example.shggv2.ui.fragment.friend.FriendFragment"
         android:label="@string/title_friend"
         tools:layout="@layout/fragment_friend" />
 </navigation>

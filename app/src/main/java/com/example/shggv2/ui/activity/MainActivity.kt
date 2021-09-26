@@ -9,6 +9,9 @@ import com.example.shggv2.R
 import com.example.shggv2.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+
+
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -23,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
 
         val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.navigation_search, R.id.navigation_rank, R.id.navigation_record, R.id.navigation_friend)
+                setOf(R.id.navigation_search, R.id.navigation_rank, R.id.navigation_record, R.id.navigation_friend)
         )
 
         navView.setupWithNavController(navController)

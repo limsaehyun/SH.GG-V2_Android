@@ -28,14 +28,12 @@ class RankFragment : Fragment() {
 
     private var rankList = arrayListOf<RankRvData>()
 
-
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
         binding = FragmentRankBinding.inflate(inflater, container, false)
-
 
         binding.rvRank.adapter = context?.let { RankAdapter(it, rankList) }
         binding.rvRank.layoutManager = LinearLayoutManager(context)

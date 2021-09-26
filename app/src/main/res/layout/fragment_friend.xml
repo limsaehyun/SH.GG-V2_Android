@@ -5,6 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#EEEEEE"
-    tools:context=".ui.fragment.FriendFragment">
+    tools:context=".ui.fragment.friend.FriendFragment">
 
+    <View
+        android:id="@+id/view14"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#C1000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view14" />
 </androidx.constraintlayout.widget.ConstraintLayout>

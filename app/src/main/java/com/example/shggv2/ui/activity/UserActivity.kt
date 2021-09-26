@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shggv2.R
 import com.example.shggv2.databinding.ActivityUserBinding
+import com.example.shggv2.model.StatisticsTier.SoloStatisticsTier
 import com.example.shggv2.task.URLtoBitmapTask
 import com.example.shggv2.ui.fragment.SearchFragment
 import java.net.URL
@@ -16,6 +17,8 @@ class UserActivity : AppCompatActivity() {
 
     private val TAG = "UserActivity"
 
+    private lateinit var soloStatisticsTier: SoloStatisticsTier
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUserBinding.inflate(layoutInflater)
@@ -25,6 +28,14 @@ class UserActivity : AppCompatActivity() {
         var SoloLosses = SearchFragment.SoloLosses
         var FlexWins = SearchFragment.FlexWins
         var FlexLosses = SearchFragment.FlexLosses
+
+//        Log.d(TAG, "테스트 출력 onCreate: " + soloStatisticsTier.test)
+//        Log.d(TAG, "테스트 출력 onCreate: " + soloStatisticsTier.soloMap["테스트1"])
+
+//        val percent = when(SearchFragment.SoloTier) {
+//            "BRONZE" -> soloStatisticsTier.map[1]
+//            else -> 0
+//        }
 
         binding.tvUserName.setText(SearchFragment.userName)
 

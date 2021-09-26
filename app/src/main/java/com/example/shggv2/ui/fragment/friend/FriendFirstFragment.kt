@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.shggv2.databinding.FragmentFriendBinding
 
-class FriendFragment : Fragment() {
-
-    private lateinit var binding: FragmentFriendBinding
+class FrienFirstdFragment : Fragment() {
+    
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
